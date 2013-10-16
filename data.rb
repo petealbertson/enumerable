@@ -100,12 +100,19 @@ load 'seeds.rb'
 
 def delete_empties
   STUDENTS.each do |kid|
+
+# You figured it out! Using the key, value in your block variable gave you access the value and you were able to filter out the nil values.
+
     kid.delete_if {|key, value| value == nil}
   end
 end
 
 def searchable
   delete_empties.each do |person|
+    
+# Fancy. Good use of a nested loop (a loop within a loop). You were able to dispaly the output without having to call each hash key.
+# Makes it easier to future proof your code and make it dynamic.
+
     person.each do |key, value|
         puts "#{key}: #{value}"
     end
@@ -113,6 +120,7 @@ def searchable
   end
 end
 
+# Try getting this work. And make it case insensitive. So that you can search for Vince or vince and still returns the same result.
 
 puts "Enter search by last name here:"
 answer = gets.chomp
